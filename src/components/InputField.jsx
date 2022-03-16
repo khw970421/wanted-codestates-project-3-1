@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { AiOutlineSearch } from 'react-icons/ai';
 // eslint-disable-next-line react/prop-types
-const InputField = ({ onKeyPress }) => {
+const InputField = ({ changeValue, onKeyPress, onChange, clickBtn }) => {
   const refContainer = useRef('');
   return (
     <InputContainer>
@@ -12,8 +12,10 @@ const InputField = ({ onKeyPress }) => {
         onKeyPress={onKeyPress}
         placeholder="레포를 찾아봅시다."
         ref={refContainer}
+        value={changeValue}
+        onChange={onChange}
       />
-      <IconContainer>
+      <IconContainer onClick={clickBtn}>
         <AiOutlineSearch size={22} />
       </IconContainer>
     </InputContainer>
