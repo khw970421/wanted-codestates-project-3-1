@@ -7,8 +7,7 @@ import { useRepoResults } from '../util/axios';
 const ResultField = ({ inputValue, setInputValue }) => {
   const queryClient = useQueryClient();
 
-  const { status, data, error } = useRepoResults(inputValue, 10);
-
+  const { status, data, error } = useRepoResults(inputValue, 1);
   const onHandleList = name => {
     setInputValue(name);
   };
@@ -27,11 +26,7 @@ const ResultField = ({ inputValue, setInputValue }) => {
               const { id, full_name, decription, updated_at, owner } = item;
               const { avatar_url } = owner;
               return (
-                <SearchedItem
-                  key={id}
-                  value={full_name}
-                  onClick={() => onHandleList(item.name)}
-                >
+                <SearchedItem key={id} value={full_name}>
                   {full_name}
                 </SearchedItem>
               );
