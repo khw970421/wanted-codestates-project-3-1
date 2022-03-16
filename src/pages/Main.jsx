@@ -4,23 +4,18 @@ import InputField from '../components/InputField';
 import ResultField from '../components/ResultField';
 import { debounce } from '../util/index';
 import { QueryClientProvider, QueryClient } from 'react-query';
-
 const queryClient = new QueryClient();
 
 const Main = () => {
   const [inputValue, setInputValue] = useState('');
-
-  const onChangeInput = useCallback(
-    e => {
-      debounce(setInputValue(e.target.value), 1000);
-    },
-    [inputValue],
-  );
-
+  const searchInput = val => setInputValue(val);
+  const clickKey = e => {
+    if (e.code === 'Enter') searchInput(e.target.value);
+  };
   return (
     <QueryClientProvider client={queryClient}>
       <Container>
-        <InputField onChangeInput={onChangeInput} inputValue={inputValue} />
+        <InputField onKeyPress={clickKey} />
         <br />
         <ResultField inputValue={inputValue} setInputValue={setInputValue} />
       </Container>
