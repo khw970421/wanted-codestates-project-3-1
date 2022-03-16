@@ -7,6 +7,7 @@ import { useRepoResults } from '../util/axios';
 const ResultField = ({ inputValue, setInputValue }) => {
   const queryClient = useQueryClient();
 
+  //Todo : useRepoResults의 두번째 매개변수는 page 버튼을 클릭할때마다 달라지게 만들어야한다.
   const { status, data, error } = useRepoResults(inputValue, 1);
   const onHandleList = name => {
     setInputValue(name);
