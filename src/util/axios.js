@@ -7,7 +7,6 @@ const getRepository = async (keyword, page) => {
     const response = await axios.get(
       `https://api.github.com/search/repositories?q=${keyword}&per_page=7&page=${page}`,
     );
-    console.log(response);
     const data = response.data;
     return data;
   } catch (error) {
