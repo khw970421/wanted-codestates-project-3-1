@@ -4,14 +4,10 @@ import { headers } from '../constants/index';
 
 const getRepository = async (keyword, page) => {
   try {
-    const response = await axios.get(`/api/search/repositories`, {
-      params: {
-        q: keyword,
-        per_page: 7,
-        page,
-      },
-      headers,
-    });
+    const response = await axios.get(
+      `https://api.github.com/search/repositories?q=${keyword}&per_page=7&page=${page}`,
+    );
+    console.log(response);
     const data = response.data;
     return data;
   } catch (error) {
@@ -21,12 +17,15 @@ const getRepository = async (keyword, page) => {
 
 const getIssue = async (owner, repo, page) => {
   try {
-    const response = await axios.get(`/api/repos/${owner}/${repo}/issues`, {
-      params: {
-        page,
+    const response = await axios.get(
+      `https://api.github.com/repos/${owner}/${repo}/issues`,
+      {
+        params: {
+          page,
+        },
+        headers,
       },
-      headers,
-    });
+    );
     const issueData = response.data;
     return issueData;
   } catch (error) {
