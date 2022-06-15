@@ -2,7 +2,7 @@
 
 ## 🚀 배포 링크
 
-https://wanted-preonboarding-tema3-payhere.netlify.app/
+https://github-repo-issue.vercel.app/
 
 ## 💿 실행 방법
 
